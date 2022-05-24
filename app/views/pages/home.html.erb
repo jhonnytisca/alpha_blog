@@ -1,5 +1,71 @@
-<h1>Hello world!</h1>
-<h2>This is the home page</h2>
+<!doctype html>
+<html lang="en">
+  <head>
+    <style media="screen">
+      #intro {
+        background-image: url(https://free4kwallpapers.com/uploads/originals/2019/12/17/painted-library-wallpaper.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<%= link_to 'Articles list', articles_path %> | 
-<%= link_to 'About', about_path %>
+    <title>Bootstrap demo</title>
+
+    </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark px-4">
+      <div class="container-fluid p-md-3 p-1">
+        <a class="navbar-brand" href="#">Alpha Blog</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid p-0">
+      <div id="intro" class="vh-100">
+        <div class="vh-100" style="background-color: rgba(0,0,0,.8);">
+          <div class="container px-md-5 px-3 text-light text-md-start text-center">
+            <div class="row vh-100 align-items-center">
+              <div class="col-12">
+                <h1>Alpha Blog</h1>
+                <p class="lead">
+                  <%= link_to 'Articles list', articles_path %> |
+                  <%= link_to 'About', about_path %>
+                </p>
+                <hr class="my-5"/>
+                <a class="btn btn-outline-light btn-lg" href="#" role="button">Learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
