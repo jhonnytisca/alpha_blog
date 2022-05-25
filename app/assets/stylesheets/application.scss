@@ -1,1 +1,4 @@
- @import "bootstrap";
+//bundle exec rake assets:clobber
+
+@import 'bootstrap';
+@import 'custom';
