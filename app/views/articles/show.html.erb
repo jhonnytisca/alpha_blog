@@ -1,5 +1,5 @@
 <% content_for :title, "Show Article" %>
-<div class="container mt-5">
+<div class="container my-5">
   <%= render 'layouts/messages' %>
   <h3><%= @article.title %></h3>
   <div class="row justify-content-center">
@@ -19,6 +19,12 @@
           <small>Created <%= time_ago_in_words(@article.created_at)%> ago, edited <%= time_ago_in_words(@article.updated_at)%> ago</small>
         </div>
       </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row justify-content-end">
+    <div class="col-4 col-sm-2">
+      <%= link_to 'Back', articles_path, class: "btn btn-outline-secondary mx-2" %>
     </div>
   </div>
 </div>
