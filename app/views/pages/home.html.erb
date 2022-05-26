@@ -1,41 +1,26 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <%= stylesheet_link_tag "home", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "home", "data-turbo-track": "reload", defer: true %>
-    <style media="screen">
-      #intro {
-        background-image: url(https://free4kwallpapers.com/uploads/originals/2019/12/17/painted-library-wallpaper.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-    </style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Bootstrap demo</title>
-
-    </head>
-  <body class="position-relative">
-    <div class="container-fluid p-0">
-      <div id="intro" class="vh-100" style="min-height: 700px">
-        <div class="h-100" style="background-color: rgba(0,0,0,.8);">
-          <div class="h-100 container px-md-5 px-3 text-light text-md-start text-center">
-            <div class="row h-100 align-items-center">
-              <div class="col-12">
-                <h1>Alpha Blog</h1>
-                <p class="lead">
-                  <%= link_to 'Articles list', articles_path %> |
-                  <%= link_to 'About', about_path %>
-                </p>
-                <hr class="my-5"/>
-                <a class="btn btn-outline-light btn-lg" href="#" role="button">Learn more</a>
-              </div>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "home", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "home", "data-turbo-track": "reload", defer: true %>
+<% end %>
+<% content_for :title, "Home" %>
+<body class="position-relative">
+  <div class="container-fluid p-0">
+    <div id="intro" class="vh-100" style="min-height: 700px">
+      <div class="h-100" style="background-color: rgba(0,0,0,.8);">
+        <div class="h-100 container px-md-5 px-3 text-light text-md-start text-center">
+          <div class="row h-100 align-items-center">
+            <div class="col-12">
+              <h1>Alpha Blog</h1>
+              <p class="lead">
+                <%= link_to 'Articles list', articles_path %> |
+                <%= link_to 'About', about_path %>
+              </p>
+              <hr class="my-5"/>
+              <%= link_to 'Learn more', about_path, class: "btn btn-outline-light btn-lg", role: "button" %>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</body>

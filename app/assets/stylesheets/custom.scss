@@ -1,3 +1,10 @@
+body{
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
 
 .navbar-brand{
   font-weight: bold !important;

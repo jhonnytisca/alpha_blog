@@ -1,26 +1,37 @@
-<h1>Articles listing page</h1>
+<% content_for :title, "Articles list" %>
+<div class="container mt-5">
+  <%= render 'layouts/messages' %>
+  <div class="row justify-content-between mx-lg-0 mx-3">
+    <div class="col-6">
+      <h3>Articles list</h3>
+    </div>
+    <div class="col-6">
+      <%= link_to 'Create new article', new_article_path, class: "btn btn-sm btn-success float-end"%>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan=3>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="row justify-content-center">
     <% @articles.each do |article| %>
-      <tr>
-        <td> <%= article.title %> </td>
-        <td> <%= article.description %> </td>
-        <td> <%= link_to 'Show', article_path(article) %></td>
-        <td> <%= link_to 'Edit', edit_article_path(article) %></td>
-        <td> <%= button_to 'Delete', article_path(article), method: :delete, onclick: "return confirm('Are you sure?')" %> </td>
-        <!--#article.id also works-->
-      </tr>
+    <div class="col-lg-5 col-10 gx-5 my-5">
+      <div class="card text-center shadow rounded">
+        <div class="card-header fst-italic text-muted">
+          by Jhonny Tiscareño
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to article.title, article_path(article) %></h5>
+          <p class="card-text"><%= truncate(article.description,length:100) %></p>
+          <div class="row justify-content-center">
+            <%= link_to 'Show', article_path(article), class: "btn btn-outline-primary col-3 col-xl-2 mx-sm-1 mx-2"%>
+            <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-info col-3 col-xl-2 mx-sm-1 mx-2"%>
+            <%= button_to 'Delete', article_path(article), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-outline-danger w-100 mx-sm-1 mx-2", form_class: "col-3 col-xl-2 p-0"%>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(article.created_at)%> ago, edited <%= time_ago_in_words(article.updated_at)%> ago</small>
+        </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-<p>
-  <%= link_to 'Create new article', new_article_path %>
-</p>
+  </div>
+
+</div>

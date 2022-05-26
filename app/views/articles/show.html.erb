@@ -1,8 +1,24 @@
-<h1>Showing article details</h1>
-<p><strong>Title: </strong> <%= @article.title %></p>
-<p><strong>Description: </strong> <%= @article.description %></p>
-<p>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= button_to 'Delete', article_path(@article), method: :delete, onclick: "return confirm('Are you sure?')" %> |
-  <%= link_to 'Back to articles', articles_path %>
-</p>
+<% content_for :title, "Show Article" %>
+<div class="container mt-5">
+  <%= render 'layouts/messages' %>
+  <h3><%= @article.title %></h3>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card text-center shadow rounded mt-5">
+        <div class="card-header fst-italic text-muted">
+          by Jhonny Tiscareño
+        </div>
+        <div class="card-body">
+          <div class="card-text text-start"><%= simple_format(@article.description) %></div>
+          <div class="row justify-content-center">
+            <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info col-3 col-xl-2 mx-sm-1 mx-2"%>
+            <%= button_to 'Delete', article_path(@article), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-outline-danger w-100 mx-sm-1 mx-2", form_class: "col-3 col-xl-2 p-0"%>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(@article.created_at)%> ago, edited <%= time_ago_in_words(@article.updated_at)%> ago</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
