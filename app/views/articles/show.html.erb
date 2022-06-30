@@ -6,13 +6,13 @@
     <div class="col-md-8">
       <div class="card text-center shadow rounded mt-5">
         <div class="card-header fst-italic text-muted">
-          by Jhonny Tiscareño
+          by <%= @article.user.username %>
         </div>
         <div class="card-body">
           <div class="card-text text-start"><%= simple_format(@article.description) %></div>
           <div class="row justify-content-center">
             <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info col-3 col-xl-2 mx-sm-1 mx-2"%>
-            <%= button_to 'Delete', article_path(@article), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-outline-danger w-100 mx-sm-1 mx-2", form_class: "col-3 col-xl-2 p-0"%>
+            <%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure of deleting #{article.title} by #{article.user.username}?"}, class: "btn btn-outline-danger col-3 col-xl-2 mx-sm-1 mx-2" %>
           </div>
         </div>
         <div class="card-footer text-muted">
