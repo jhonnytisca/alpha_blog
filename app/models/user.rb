@@ -9,6 +9,8 @@ class User < ApplicationRecord
                   format: {with: VALID_EMAIL_REGEX},
                   length: {maximum: 105}
 
+  validates :password, presence: true
+
   has_secure_password
 
   has_many :articles
