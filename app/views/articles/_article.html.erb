@@ -1,0 +1,23 @@
+<div class="row justify-content-center">
+  <% obj.each do |article| %>
+    <div class="col-lg-5 col-11 gx-5 mb-5 p-1 p-sm-3">
+      <div class="card text-center shadow rounded">
+        <div class="card-header fst-italic text-muted">
+          by <%= article.user.username %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to article.title, article_path(article) %></h5>
+          <p class="card-text"><%= truncate(article.description,length:100) %></p>
+          <div class="row justify-content-center">
+            <%= link_to 'Show', article_path(article), class: "btn btn-outline-primary col-3 col-xl-2 mx-sm-1 mx-2"%>
+            <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-info col-3 col-xl-2 mx-sm-1 mx-2"%>
+            <%= button_to 'Delete', article_path(article), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-outline-danger w-100 mx-sm-1 mx-2", form_class: "col-3 col-xl-2 p-0"%>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <small>Created <%= time_ago_in_words(article.created_at)%> ago, edited <%= time_ago_in_words(article.updated_at)%> ago</small>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
