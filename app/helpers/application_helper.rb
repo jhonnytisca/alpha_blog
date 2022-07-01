@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def gravatar_for(user,options ={size:80, class:"rounded mx-auto d-block shadow"})
+  def gravatar_for(user,options ={size:80, class:"rounded mx-auto d-block shadow my-2"})
     email_address = user.email.downcase
     hash = Digest::MD5.hexdigest(email_address)
     size = options[:size]

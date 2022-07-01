@@ -16,6 +16,7 @@
     <% unless content_for?(:container) %>
       <div class="container my-5">
     <% end %>
+        <%= render 'layouts/messages' %>
         <%= yield %>
     <% unless content_for?(:container) %>
       </div>

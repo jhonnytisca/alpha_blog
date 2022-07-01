@@ -17,7 +17,10 @@
                 <%= link_to 'About', about_path %>
               </p>
               <hr class="my-5"/>
-              <%= link_to 'Sign up!', signup_path, class: "btn btn-outline-light btn-lg", role: "button" %>
+              <div class="row justify-content-md-start justify-content-center">
+                <%= link_to 'Sign up!', signup_path, class: "btn btn-outline-light btn-lg col-lg-2 col-3 mx-2", role: "button" %>
+                 <%= link_to 'Log in', login_path, class: "btn btn-outline-light btn-lg col-lg-2 col-3 mx-2", role: "button" %>
+              </div>
             </div>
           </div>
         </div>

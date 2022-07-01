@@ -7,8 +7,8 @@
           <%= gravatar_for user, size: 200, class: "my-3 rounded mx-auto d-block shadow" %>
           <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
           <div class="row justify-content-center">
-            <%= link_to 'View profile', user, class: "btn btn-outline-primary col-4 col-l-3 mx-sm-1 mx-2"%>
-            <%= link_to 'Edit profile', edit_user_path(user), class: "btn btn-outline-info col-4 col-l-3 mx-sm-1 mx-2"%>
+            <%= link_to 'View profile', user, class: "btn btn-outline-primary col-4 mx-sm-1 mx-2"%>
+            <%= link_to 'Edit profile', edit_user_path(user), class: "btn btn-outline-info col-4 mx-sm-1 mx-2"%>
           </div>
         </div>
         <div class="card-footer text-muted">

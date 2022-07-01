@@ -1,19 +1,18 @@
 <% content_for :title, "Show Article" %>
 
-<%= render 'layouts/messages' %>
 <h3><%= @article.title %></h3>
 <div class="row justify-content-center">
   <div class="col-md-8">
     <div class="card text-center shadow rounded mt-5">
       <div class="card-header fst-italic text-muted">
-        by <%= @article.user.username %>
+        by <%= link_to @article.user.username, user_path(@article.user)%>
         <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
       </div>
       <div class="card-body">
         <div class="card-text text-start"><%= simple_format(@article.description) %></div>
         <div class="row justify-content-center">
-          <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info col-3 col-xl-2 mx-sm-1 mx-2"%>
-          <%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure of deleting #{@article.title} by #{@article.user.username}?"}, class: "btn btn-outline-danger col-3 col-xl-2 mx-sm-1 mx-2" %>
+          <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info col-3 mx-sm-1 mx-2"%>
+          <%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure of deleting #{@article.title} by #{@article.user.username}?"}, class: "btn btn-outline-danger col-3 mx-sm-1 mx-2" %>
         </div>
       </div>
       <div class="card-footer text-muted">
