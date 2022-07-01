@@ -4,19 +4,23 @@
     <h3>Articles list</h3>
   </div>
   <div class="col-6">
-    <%= link_to 'Create new article', new_article_path, class: "btn btn-sm btn-success float-end"%>
+    <%= link_to 'Create new article', new_article_path, class: "btn btn-sm btn-success float-end" if logged_in?%>
   </div>
 </div>
-<div class="flickr_pagination my-3">
-  <%= will_paginate @articles, :container => false %>
-  <div class="page_info">
-    <%= page_entries_info @articles %>
+<% if @articles.empty? %>
+  <p class="mb-5 mx-5 mt-2 text-secondary">Nothing to show. <%= link_to "Create a new article.", new_article_path, class:"text-success" if logged_in? %></p>
+<% else %>
+  <div class="flickr_pagination my-3">
+    <%= will_paginate @articles, :container => false %>
+    <div class="page_info">
+      <%= page_entries_info @articles %>
+    </div>
   </div>
-</div>
-<%= render 'article', obj: @articles %>
-<div class="flickr_pagination my-3">
-  <%= will_paginate @articles, :container => false %>
-  <div class="page_info">
-    <%= page_entries_info @articles %>
+  <%= render 'article', obj: @articles %>
+  <div class="flickr_pagination my-3">
+    <%= will_paginate @articles, :container => false %>
+    <div class="page_info">
+      <%= page_entries_info @articles %>
+    </div>
   </div>
-</div>
+<% end %>
