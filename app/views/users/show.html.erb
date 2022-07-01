@@ -2,9 +2,11 @@
 
 <h3><%= @user.username + "'s profile" %></h3>
 <%= gravatar_for @user, size: 200, class: "my-5 rounded mx-auto d-block shadow"%>
-<div class="text-center mt-4">
-  <%= link_to "Edit yout profile", edit_user_path(@user), class: "btn btn-outline-info" %>
-</div>
+<% if logged_in? && @user == current_user %>
+  <div class="text-center mt-4">
+    <%= link_to "Edit yout profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+  </div>
+<% end %>
 <h4 class="mb-3" >Articles</h4>
 <% if @articles.empty? %>
   <p class="mb-5 mt-2">You haven't published any articles yet.</p>
