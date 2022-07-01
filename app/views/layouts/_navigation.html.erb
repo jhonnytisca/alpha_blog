@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav my-2">
         <li class="nav-item">
           <%= link_to "Bloggers", users_path, class:"nav-link" %>
         </li>
@@ -18,6 +18,16 @@
             <li><%= link_to "New article", new_article_path, class:"dropdown-item" %></li>
           </ul>
         </li>
+        <% unless session[:user_id] %>
+          <li class="nav-item">
+            <%= link_to "Login", login_path, class:"nav-link" %>
+          </li>
+        <% end %>
+        <% if session[:user_id] %>
+          <li class="nav-item">
+            <%= link_to "Logout", logout_path, class:"nav-link", data: { "turbo-method": :delete} %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to "About", about_path, class:"nav-link" %>
         </li>
