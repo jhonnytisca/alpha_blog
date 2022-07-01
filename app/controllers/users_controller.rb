@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Your account information was successfully updated"
       redirect_to @user
     else
-      render 'edit'
+      render 'edit', status: :unprocessable_entity
     end
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome to the Alpha Blog #{@user.username}, you have successfully signed up"
       redirect_to articles_path
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
   end
 

@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was created succesfully."
       redirect_to @article #redirect_to article_path(@article)
     else
-      render 'new'
+      render 'new', status: :unprocessable_entity
     end
     #render plain: @article.inspect #params[:article]
   end
@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was updated succesfully."
       redirect_to @article #redirect_to article_path(@article)
     else
-      render 'edit'
+      render 'edit', status: :unprocessable_entity
     end
     #render plain: @article.inspect #params[:article]
   end

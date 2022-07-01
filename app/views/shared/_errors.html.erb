@@ -1,5 +1,5 @@
 <% if obj.errors.any? %>
-<div class="alert alert-warning shadow alert-dismissible fade show" role="alert">
+<div class="alert alert-warning shadow alert-dismissible fade show my-3" role="alert">
   <p><strong>The following errors prevented the <%= obj.class.name.downcase %> from being saved</strong></p>
   <ul>
     <% obj.errors.full_messages.each do |msg| %>
