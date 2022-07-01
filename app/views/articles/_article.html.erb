@@ -1,9 +1,11 @@
 <div class="row justify-content-center">
   <% obj.each do |article| %>
-    <div class="col-lg-5 col-11 gx-5 mb-5 p-1 p-sm-3">
+    <div class="col-lg-5 col-11 gx-5 p-1 p-sm-3">
       <div class="card text-center shadow rounded">
         <div class="card-header fst-italic text-muted">
-          by <%= article.user.username %>
+          <% if article.user %>
+            by <%= link_to article.user.username, user_path(article.user)%>
+          <% end %>
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= link_to article.title, article_path(article) %></h5>

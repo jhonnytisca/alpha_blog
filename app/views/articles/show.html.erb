@@ -1,30 +1,30 @@
 <% content_for :title, "Show Article" %>
-<div class="container my-5">
-  <%= render 'layouts/messages' %>
-  <h3><%= @article.title %></h3>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card text-center shadow rounded mt-5">
-        <div class="card-header fst-italic text-muted">
-          by <%= @article.user.username %>
+
+<%= render 'layouts/messages' %>
+<h3><%= @article.title %></h3>
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card text-center shadow rounded mt-5">
+      <div class="card-header fst-italic text-muted">
+        by <%= @article.user.username %>
+        <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+      </div>
+      <div class="card-body">
+        <div class="card-text text-start"><%= simple_format(@article.description) %></div>
+        <div class="row justify-content-center">
+          <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info col-3 col-xl-2 mx-sm-1 mx-2"%>
+          <%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure of deleting #{@article.title} by #{@article.user.username}?"}, class: "btn btn-outline-danger col-3 col-xl-2 mx-sm-1 mx-2" %>
         </div>
-        <div class="card-body">
-          <div class="card-text text-start"><%= simple_format(@article.description) %></div>
-          <div class="row justify-content-center">
-            <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info col-3 col-xl-2 mx-sm-1 mx-2"%>
-            <%= link_to 'Delete', article_path(@article), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure of deleting #{article.title} by #{article.user.username}?"}, class: "btn btn-outline-danger col-3 col-xl-2 mx-sm-1 mx-2" %>
-          </div>
-        </div>
-        <div class="card-footer text-muted">
-          <small>Created <%= time_ago_in_words(@article.created_at)%> ago, edited <%= time_ago_in_words(@article.updated_at)%> ago</small>
-        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <small>Created <%= time_ago_in_words(@article.created_at)%> ago, edited <%= time_ago_in_words(@article.updated_at)%> ago</small>
       </div>
     </div>
   </div>
-  <br/>
-  <div class="row justify-content-end">
-    <div class="col-4 col-sm-2">
-      <%= link_to 'Back', articles_path, class: "btn btn-outline-secondary mx-2" %>
-    </div>
+</div>
+<br/>
+<div class="row justify-content-end">
+  <div class="col-4 col-sm-2">
+    <%= link_to 'Back', articles_path, class: "btn btn-outline-secondary mx-2" %>
   </div>
 </div>

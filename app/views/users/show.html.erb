@@ -1,11 +1,24 @@
 <% content_for :title, @user.username + "'s profile" %>
-<div class="container mt-5">
-  <h3><%= @user.username + "'s profile" %></h3>
-  <%= gravatar_for @user, size: 200, class: "my-5 rounded mx-auto d-block shadow"%>
 
-  <h4 class="mb-3" >Articles</h4>
-  <% if @user.articles.empty? %>
-    <p class="mb-5 mt-2">You haven't published any articles yet.</p>
-  <% end %>
-  <%= render 'articles/article', obj: @user.articles %>
+<h3><%= @user.username + "'s profile" %></h3>
+<%= gravatar_for @user, size: 200, class: "my-5 rounded mx-auto d-block shadow"%>
+<div class="text-center mt-4">
+  <%= link_to "Edit yout profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+</div>
+<h4 class="mb-3" >Articles</h4>
+<% if @articles.empty? %>
+  <p class="mb-5 mt-2">You haven't published any articles yet.</p>
+<% end %>
+<div class="flickr_pagination my-3">
+  <%= will_paginate @articles, :container => false %>
+  <div class="page_info">
+    <%= page_entries_info @articles %>
+  </div>
+</div>
+<%= render 'articles/article', obj: @articles %>
+<div class="flickr_pagination my-3">
+  <%= will_paginate @articles, :container => false %>
+  <div class="page_info">
+    <%= page_entries_info @articles %>
+  </div>
 </div>

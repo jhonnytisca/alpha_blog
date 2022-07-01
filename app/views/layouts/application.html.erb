@@ -13,7 +13,13 @@
 
   <body>
     <%= render 'layouts/navigation' %>
-    <%= yield %>
+    <% unless content_for?(:container) %>
+      <div class="container my-5">
+    <% end %>
+        <%= yield %>
+    <% unless content_for?(:container) %>
+      </div>
+    <% end %>
     <%= render 'layouts/footer' %>
   </body>
 </html>
