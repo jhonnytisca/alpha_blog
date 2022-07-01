@@ -3,8 +3,9 @@
 <h3><%= @user.username + "'s profile" %></h3>
 <%= gravatar_for @user, size: 200, class: "my-5 rounded mx-auto d-block shadow"%>
 <% if logged_in? && @user == current_user %>
-  <div class="text-center mt-4">
-    <%= link_to "Edit yout profile", edit_user_path(@user), class: "btn btn-outline-info" %>
+  <div class="text-center my-4">
+    <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-info col-lg-3 mx-2" %>
+    <%= link_to "Change profile image", "https://www.gravatar.com/", class: "btn btn-outline-info col-lg-3 mx-2" %>
   </div>
 <% end %>
 <h4 class="mb-3" >Articles</h4>
