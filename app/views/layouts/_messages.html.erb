@@ -4,8 +4,12 @@
       <% type = "danger" %>
     <% when "notice" %>
       <% type = "success" %>
-    <% else %>
+    <% when "warning" %>
+      <% type = "warning" %>
+    <% when "info" %>
       <% type = "info" %>
+    <% else %>
+      <% type = "primary" %>
   <% end %>
   <div class="alert alert-<%= type %> mb-5 shadow alert-dismissible fade show" role="alert" style="height:3.5em">
     <p><%= msg %></p>
