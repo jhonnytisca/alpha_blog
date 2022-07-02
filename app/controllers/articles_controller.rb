@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article_category, only: [:destroy]
   before_action :require_user, except: [:show, :index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
@@ -42,6 +43,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
+    @article_category.destroy_all
     flash[:notice] = "Article was deleted succesfully."
     redirect_to articles_path, status: :see_other
   end
@@ -50,6 +52,10 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def set_article_category
+    @article_category = ArticleCategory.where(article_id: params[:id])
   end
 
   def article_params
