@@ -1,0 +1,29 @@
+<% content_for :title, "Show Category" %>
+<div class="row">
+  <div class="col-6">
+    <h3><%= @category.name %> <small class="h6 text-muted">Category</small></h3>
+  </div>
+  <div class="col-6">
+    <%= link_to 'Edit category', edit_category_path(@category), class: "btn btn-sm btn-outline-info float-end" if logged_in? && current_user.admin?%>
+  </div>
+</div>
+<% if @articles.empty? %>
+  <p class="m-5">No articles in this category.</p>
+<% else %>
+  <div class="flickr_pagination my-3">
+    <%= will_paginate @articles, :container => false %>
+    <div class="page_info">
+      <%= page_entries_info @articles %>
+    </div>
+  </div>
+  <%= render 'articles/article', obj: @articles %>
+  <div class="flickr_pagination my-3">
+    <%= will_paginate @articles, :container => false %>
+    <div class="page_info">
+      <%= page_entries_info @articles %>
+    </div>
+  </div>
+<% end %>
+<div class="row justify-content-end">
+  <%= link_to 'Back', categories_path, class: "btn btn-outline-secondary mx-2 col-2 col-xl-1" %>
+</div>
